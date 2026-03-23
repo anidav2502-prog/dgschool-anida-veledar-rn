@@ -9,7 +9,7 @@ const BottomTabNavigator = () => {
     <Tab.Navigator
       screenOptions={{
         tabBarStyle: {
-          backgroundColor: "#FF6347",
+          backgroundColor: "#384053",
         },
         tabBarActiveTintColor: "white",
         tabBarInactiveTintColor: "lightgray",
