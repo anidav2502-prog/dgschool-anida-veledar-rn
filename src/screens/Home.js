@@ -31,6 +31,20 @@ const Home = ({ navigation }) => (
               />
             </View>
         </Swiper>
+        <Swiper
+          autoplay
+          autoplayTimeout={5}
+          activeDotColor="#d76d03">
+            <View style={styles.container2}>
+              <Text style={styles.container2}>AAAA</Text>
+            </View>
+            <View style={styles.container3}>
+              <Text style={styles.container3}>BBBB</Text>
+            </View>
+            <View style={styles.container4}>
+              <Text style={styles.container4}>CCCC</Text>
+            </View>
+        </Swiper>
       </View>
   </View>
 );
@@ -59,6 +73,34 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     borderRadius: 8,
+  },
+
+  container2: {
+    backgroundColor: 'pink',
+    marginTop: 10,
+    padding: 10,
+    height: 100,
+    width: '100%',
+    fontStyle: 'italic',
+    textAlign: 'center',
+  },
+  container3: {
+    backgroundColor: 'green',
+    marginTop: 10,
+    padding: 10,
+    height: 100,
+    width: '100%',
+    fontStyle: 'italic',
+    textAlign: 'center',
+  },
+  container4: {
+    backgroundColor: 'yellow',
+    marginTop: 10,
+    padding: 10,
+    height: 100,
+    width: '100%',
+    fontStyle: 'italic',
+    textAlign: 'center',
   },
 });
 
