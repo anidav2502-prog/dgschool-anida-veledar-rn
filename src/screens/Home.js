@@ -1,53 +1,87 @@
 import React from "react";
-import { Text, View, StyleSheet, Button, Image } from "react-native";
+import { Text, View, StyleSheet, Button, Image, FlatList, ScrollView } from "react-native";
 import Swiper from "react-native-swiper";
+import Icon from "../components/icon";
+import data from '../data/products.json';
+import Item from "../components/item";
 
-const Home = ({ navigation }) => (
-  <View style={styles.container}>
-      <View style={styles.sliderContainer}>
-        <Swiper
-          autoplay
-          autoplayTimeout={5}
-          activeDotColor="#22d4ff">
-            <View style={styles.item}>
-              <Image
-                source={require("../../assets/img1.png")}
-                style={styles.imgItem}
-                resizeMode="cover"
-              />
-            </View>
-            <View style={styles.item}>
-              <Image
-                source={require("../../assets/img2.png")}
-                style={styles.imgItem}
-                resizeMode="cover"
-              />
-            </View>
-            <View style={styles.item}>
-              <Image
-                source={require("../../assets/img3.png")}
-                style={styles.imgItem}
-                resizeMode="cover"
-              />
-            </View>
-        </Swiper>
-        <Swiper
-          autoplay
-          autoplayTimeout={5}
-          activeDotColor="#d76d03">
-            <View style={styles.container2}>
-              <Text style={styles.container2}>AAAA</Text>
-            </View>
-            <View style={styles.container3}>
-              <Text style={styles.container3}>BBBB</Text>
-            </View>
-            <View style={styles.container4}>
-              <Text style={styles.container4}>CCCC</Text>
-            </View>
-        </Swiper>
-      </View>
-  </View>
-);
+class Home extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      products: [],
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      products: data,
+    });
+  }
+
+  render() {
+    return (
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.sliderContainer}>
+            <Swiper
+              autoplay
+              autoplayTimeout={5}
+              activeDotColor="#22D4FF"
+              showsButtons={true}
+            >
+              <View style={styles.item}>
+                <Image
+                  source={require("../../assets/img1.png")}
+                  style={styles.imgItem}
+                  resizeMode="cover"
+                />
+              </View>
+              <View style={styles.item}>
+                <Image
+                  source={require("../../assets/img2.png")}
+                  style={styles.imgItem}
+                  resizeMode="cover"
+                />
+              </View>
+              <View style={styles.item}>
+                <Image
+                  source={require("../../assets/img3.png")}
+                  style={styles.imgItem}
+                  resizeMode="cover"
+                />
+              </View>
+            </Swiper>
+          </View>
+
+          <View style={styles.iconsContainer}>
+            <Icon name="cellphone" iconText="iPhone" />
+            <Icon name="android" iconText="Android" />
+            <Icon name="laptop" iconText="Laptop" />
+          </View>
+
+          <View style={styles.iconsContainer}>
+            <Icon name="tablet" iconText="Tablet" />
+            <Icon name="mouse" iconText="Mouse" />
+            <Icon name="keyboard" iconText="Keyboard" />
+          </View>
+
+          <View style={styles.productsContainer}>
+            <Text style={styles.title}>Most popular products</Text>
+            <FlatList
+              data={this.state.products.popularproducts}
+              renderItem={({ item }) => (
+                <View>
+                  <Item item={item} />
+                </View>
+              )}
+            />
+          </View>
+        </View>
+      </ScrollView>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -101,6 +135,25 @@ const styles = StyleSheet.create({
     width: '100%',
     fontStyle: 'italic',
     textAlign: 'center',
+  },
+
+  iconsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "90%",
+    alignSelf: "center",
+    marginTop: 30,
+  },
+
+  productsContainer: {
+    marginHorizontal: 20,
+  },
+
+  title: {
+    marginTop: 35,
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 16
   },
 });
 
