@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, Button, Image, FlatList, ScrollView } from "react-native";
+import { Text, View, StyleSheet, Button, Image, TouchableOpacity, FlatList, ScrollView } from "react-native";
 import Swiper from "react-native-swiper";
 import Icon from "../components/icon";
 import data from '../data/products.json';
@@ -55,8 +55,8 @@ class Home extends React.Component {
           </View>
 
           <View style={styles.iconsContainer}>
-            <Icon name="cellphone" iconText="iPhone" />
-            <Icon name="android" iconText="Android" />
+            <TouchableOpacity onPress={()=>this.props.navigation.navigate("Ios")}><Icon name="cellphone" iconText="iPhone" /></TouchableOpacity>
+            <TouchableOpacity onPress={()=>this.props.navigation.navigate("Android")}><Icon name="android" iconText="Android" /></TouchableOpacity>
             <Icon name="laptop" iconText="Laptop" />
           </View>
 
