@@ -1,6 +1,8 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { AboutStackNavigator, MainStackNavigator, IosStackNavigator, AndroidStackNavigator } from "./StackNavigator";
+import { AboutStackNavigator, MainStackNavigator } from "./StackNavigator";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Ios from "../screens/Ios";
+import Android from "../screens/Android";
 
 const Tab = createBottomTabNavigator();
 
@@ -16,7 +18,6 @@ const BottomTabNavigator = () => {
         tabBarLabelStyle: {
           fontSize: 12,
         },
-        headerShown: false,
       }}
     >
       <Tab.Screen
@@ -24,13 +25,26 @@ const BottomTabNavigator = () => {
         component={MainStackNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home" size={24} color="black" />
+            <MaterialCommunityIcons name="home" size={26} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="About"
+        component={AboutStackNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="video-stabilization"
+              size={26}
+              color={color}
+            />
           ),
         }}
       />
       <Tab.Screen
         name="Ios"
-        component={IosStackNavigator}
+        component={Ios}
         options={{
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="apple" size={26} color={color} />
@@ -39,7 +53,7 @@ const BottomTabNavigator = () => {
       />
       <Tab.Screen
         name="Android"
-        component={AndroidStackNavigator}
+        component={Android}
         options={{
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="android" size={26} color={color} />
@@ -47,8 +61,6 @@ const BottomTabNavigator = () => {
         }}
       />
     </Tab.Navigator>
-
-
   );
 };
 
